@@ -217,6 +217,8 @@ Mithril = m = new function app(window) {
 	
 	var roots = [], modules = [], controllers = [], now = 0, lastRedraw = 0, lastRedrawId = 0, computePostRedrawHook = null
 	m.module = function(root, module) {
+		if(!root)
+			throw "Invalid module mount point. Did you try to mount a module to a DOM element that does not exist?";
 		m.startComputation()
 		var index = roots.indexOf(root)
 		if (index < 0) index = roots.length
